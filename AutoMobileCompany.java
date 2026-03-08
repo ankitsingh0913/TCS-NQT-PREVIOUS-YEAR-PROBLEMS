@@ -11,7 +11,7 @@ per the given data.
 
 import java.util.Scanner;
 
-public class VehicleProduction {
+public class AutoMobileCompany {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
