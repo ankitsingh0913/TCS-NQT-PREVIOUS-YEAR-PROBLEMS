@@ -1,3 +1,27 @@
+/*
+Problem Statement:
+    Given a sequence of digits, remove consecutive duplicate elements and retain only the first occurrence in each group.
+
+Input:
+    A string of digits.
+
+Output:
+    A string with consecutive duplicates removed.
+
+Sample Cases:
+Input 1:
+    112233345
+
+Output 1:
+    12345
+
+Input 2:
+    1122331156
+
+Output 2:
+    123156
+*/
+
 import java.util.Scanner;
 
 public class RemoveConsecutiveDuplicates {
@@ -18,5 +42,4 @@ public class RemoveConsecutiveDuplicates {
         String s = sc.nextLine();
         System.out.println(removeDuplicate(s));
     }
-    
 }
