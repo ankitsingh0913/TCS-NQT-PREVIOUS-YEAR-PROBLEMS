@@ -1,6 +1,5 @@
-package TCSNQTPROBLEMS.Problems_on_Matrix;
 import java.util.Scanner;
-
+import java.util.Arrays;
 /*
 Problem Statement:
     Given a 0-indexed 2D integer matrix grid of size n * m, we define a 0-indexed 2D matrix p of size n * m as the 
@@ -27,26 +26,45 @@ Explanation:
     p[0][2] = grid[0][0] * grid[0][1] = 12345 * 2 = 24690. 24690 % 12345 = 0. So p[0][2] = 0.
     So the answer is [[2],[0],[0]].
 */
-public class ConstructProductMatrix {
+public class ConstructProductMatrix{
 
-    static int[][] constructProductMatrix(int[][] grid){
+    static int[][] constructMatrix(int[][] grid){
+        final int N = 12345; 
         int m = grid.length;
         int n = grid[0].length;
         int[][] p = new int[m][n];
 
+        long pref = 1;
+
         for(int i = 0;i<m;i++){
             for(int j = 0;j<n;j++){
-                p[i][j] = 1; 
-                for(int x = 0;x<m;x++){
-                    for(int y = 0;j<n;j++){
-                        if(x == i && y == j){
-                            continue;
-                        }
-                        p[i][j] *= grid[x][y];
-                    }
-                }
+                p[i][j] = (int) pref;
+                pref = (pref * (grid[i][j] % N)) % N;
             }
         }
+
+        long suf = 1;
+
+        for(int i = m-1;i>=0;i--){
+            for( int j = n-1;j>=0;j--){
+                p[i][j] = (int)((1L * p[i][j] * suf) % N);
+                suf = (suf * (grid[i][j] % N)) %N;
+            }
+        }
+        
+        // for(int i = 0;i<m;i++){
+        //     for(int j = 0;j<n;j++){
+        //         p[i][j] = 1; 
+        //         for(int x = 0;x<m;x++){
+        //             for(int y = 0;j<n;j++){
+        //                 if(x == i && y == j){
+        //                     continue;
+        //                 }
+        //                 p[i][j] *= grid[x][y];
+        //             }
+        //         }
+        //     }
+        // }
         return p;
     }
 
@@ -61,11 +79,13 @@ public class ConstructProductMatrix {
             }
         }
 
-        int[][] product = constructProductMatrix(grid);
-        for(int i = 0;i<m;i++){
-            for(int j = 0;j<n;j++){
-                System.out.println(p[i][j] + " ");
-            }
-        }
+        int[][] product = constructMatrix(grid);
+        // for(int i = 0;i<m;i++){
+        //     for(int j = 0;j<n;j++){
+        //         System.out.println(product[i][j] + " ");
+        //     }
+        // }
+
+        System.out.println(Arrays.deepToString(product));
     }
 }
