@@ -52,19 +52,6 @@ public class ConstructProductMatrix{
             }
         }
         
-        // for(int i = 0;i<m;i++){
-        //     for(int j = 0;j<n;j++){
-        //         p[i][j] = 1; 
-        //         for(int x = 0;x<m;x++){
-        //             for(int y = 0;j<n;j++){
-        //                 if(x == i && y == j){
-        //                     continue;
-        //                 }
-        //                 p[i][j] *= grid[x][y];
-        //             }
-        //         }
-        //     }
-        // }
         return p;
     }
 
