@@ -24,4 +24,11 @@ class MinimumDistanceBetweenThreeEqualElementsII {
         }
         return min == Integer.MAX_VALUE ? -1 : min;
     }
+
+    public static void main(String[] args) {
+        MinimumDistanceBetweenThreeEqualElementsII solution = new MinimumDistanceBetweenThreeEqualElementsII();
+        int[] nums = {1, 2, 3, 1, 2, 3, 1};
+        int result = solution.minimumDistance(nums);
+        System.out.println(result); // Output: 4
+    }
 }
